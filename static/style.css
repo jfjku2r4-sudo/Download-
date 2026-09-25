@@ -1,0 +1,166 @@
+:root {
+  --primary: #6c5ce7;
+  --primary-dark: #5a4bd1;
+  --bg: #0f1020;
+  --card-bg: #1a1b30;
+  --text: #eaeaf5;
+  --muted: #9a9ab0;
+  --success: #2ecc71;
+  --danger: #e74c3c;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Tahoma", "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: var(--card-bg);
+}
+
+.brand { display: flex; align-items: center; gap: 8px; font-weight: bold; font-size: 1.2rem; }
+.admin-link { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+.admin-link:hover { color: var(--text); }
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 16px 64px;
+}
+
+h1 { text-align: center; font-size: 1.8rem; margin-bottom: 4px; }
+.subtitle { text-align: center; color: var(--muted); margin-bottom: 24px; }
+
+.card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+label { display: block; margin: 12px 0 6px; color: var(--muted); font-size: 0.9rem; }
+
+input[type="text"], input[type="password"] {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #333555;
+  background: #10112780;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.input-row { display: flex; gap: 8px; }
+.input-row input { flex: 1; }
+
+button {
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: none;
+  background: var(--primary);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+button:hover { background: var(--primary-dark); }
+
+.status { margin-top: 12px; color: var(--muted); min-height: 20px; }
+
+.video-info {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 16px;
+}
+.video-info img { width: 100px; border-radius: 8px; }
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--primary);
+  font-size: 0.75rem;
+  margin-top: 6px;
+}
+
+.quality-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.quality-btn {
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--primary);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.quality-btn.selected, .quality-btn:hover {
+  background: var(--primary);
+}
+
+.download-result {
+  margin-top: 20px;
+  padding: 14px;
+  border-radius: 10px;
+  background: #14251c;
+  border: 1px solid var(--success);
+}
+.download-result a {
+  color: var(--success);
+  font-weight: bold;
+}
+
+.hidden { display: none; }
+
+.how-it-works {
+  margin-top: 40px;
+  color: var(--muted);
+}
+.how-it-works h2 { color: var(--text); font-size: 1.1rem; }
+.disclaimer { font-size: 0.8rem; margin-top: 16px; line-height: 1.6; }
+
+/* ---- Admin ---- */
+.admin-body { display: flex; flex-direction: column; min-height: 100vh; }
+.login-card {
+  max-width: 360px;
+  margin: 80px auto;
+  background: var(--card-bg);
+  padding: 28px;
+  border-radius: 16px;
+}
+.login-card h2 { text-align: center; }
+.flash-error { background: #3a1616; color: #ff8080; padding: 10px; border-radius: 8px; margin-bottom: 10px; }
+.back-link { display: block; text-align: center; margin-top: 16px; color: var(--muted); text-decoration: none; }
+
+.stats-grid { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 32px; }
+.stat-box {
+  flex: 1;
+  min-width: 140px;
+  background: var(--card-bg);
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+}
+.stat-number { display: block; font-size: 1.8rem; font-weight: bold; color: var(--primary); }
+.stat-label { color: var(--muted); font-size: 0.85rem; }
+
+.table-section { margin-bottom: 32px; }
+table { width: 100%; border-collapse: collapse; background: var(--card-bg); border-radius: 10px; overflow: hidden; }
+th, td { padding: 10px 12px; text-align: right; border-bottom: 1px solid #2a2c4a; font-size: 0.85rem; }
+th { background: #22234a; color: var(--muted); }
+td.ok { color: var(--success); }
+td.fail { color: var(--danger); }
