@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ناقل | تنزيل فيديوهات يوتيوب - تيك توك - فيسبوك</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="logo">⬇️</span>
+    <span class="brand-name">ناقل</span>
+  </div>
+  <a href="{{ url_for('admin_login') }}" class="admin-link">دخول الأدمن</a>
+</header>
+
+<main class="container">
+  <h1>نزّل فيديوهاتك المفضلة بسهولة</h1>
+  <p class="subtitle">يدعم يوتيوب، تيك توك، وفيسبوك — اختر الجودة التي تناسبك</p>
+
+  <div class="card">
+    <label for="displayName">اسمك (اختياري)</label>
+    <input type="text" id="displayName" placeholder="مثال: أحمد">
+
+    <label for="videoUrl">رابط الفيديو</label>
+    <div class="input-row">
+      <input type="text" id="videoUrl" placeholder="الصق رابط الفيديو هنا...">
+      <button id="fetchBtn">جلب الجودات</button>
+    </div>
+
+    <div id="status" class="status"></div>
+
+    <div id="videoInfo" class="video-info hidden">
+      <img id="thumb" src="" alt="">
+      <div>
+        <h3 id="videoTitle"></h3>
+        <span id="platformBadge" class="badge"></span>
+      </div>
+    </div>
+
+    <div id="qualityList" class="quality-list"></div>
+
+    <div id="downloadResult" class="download-result hidden"></div>
+  </div>
+
+  <section class="how-it-works">
+    <h2>كيف يعمل؟</h2>
+    <ol>
+      <li>الصق رابط الفيديو من يوتيوب أو تيك توك أو فيسبوك.</li>
+      <li>اضغط "جلب الجودات" لعرض الجودات المتاحة.</li>
+      <li>اختر الجودة المناسبة ثم اضغط تنزيل.</li>
+    </ol>
+    <p class="disclaimer">
+      يرجى استخدام هذه الأداة لتنزيل المحتوى الذي تملك حقوقه أو المسموح بتنزيله فقط،
+      واحترام شروط استخدام كل منصة وحقوق الملكية الفكرية لصانعي المحتوى.
+    </p>
+  </section>
+</main>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

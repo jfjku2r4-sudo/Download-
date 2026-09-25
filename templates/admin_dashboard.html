@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لوحة تحكم الأدمن</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="admin-body">
+<header class="topbar">
+  <div class="brand">
+    <span class="logo">🛠️</span>
+    <span class="brand-name">لوحة التحكم</span>
+  </div>
+  <a href="{{ url_for('admin_logout') }}" class="admin-link">تسجيل الخروج</a>
+</header>
+
+<main class="container">
+  <div class="stats-grid">
+    <div class="stat-box">
+      <span class="stat-number">{{ total_users }}</span>
+      <span class="stat-label">إجمالي المستخدمين</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-number">{{ total_downloads }}</span>
+      <span class="stat-label">إجمالي طلبات التنزيل</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-number">{{ success_downloads }}</span>
+      <span class="stat-label">تنزيلات ناجحة</span>
+    </div>
+  </div>
+
+  <section class="table-section">
+    <h2>التنزيلات حسب المنصة</h2>
+    <table>
+      <thead><tr><th>المنصة</th><th>العدد</th></tr></thead>
+      <tbody>
+        {% for row in by_platform %}
+        <tr><td>{{ row.platform }}</td><td>{{ row.c }}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="table-section">
+    <h2>آخر المستخدمين</h2>
+    <table>
+      <thead><tr><th>#</th><th>الاسم</th><th>IP</th><th>تاريخ الانضمام</th></tr></thead>
+      <tbody>
+        {% for u in users %}
+        <tr>
+          <td>{{ u.id }}</td>
+          <td>{{ u.display_name }}</td>
+          <td>{{ u.ip_address }}</td>
+          <td>{{ u.created_at }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="table-section">
+    <h2>سجل التنزيلات</h2>
+    <table>
+      <thead>
+        <tr><th>#</th><th>المستخدم</th><th>المنصة</th><th>العنوان</th><th>الجودة</th><th>الحالة</th><th>التاريخ</th></tr>
+      </thead>
+      <tbody>
+        {% for d in downloads %}
+        <tr>
+          <td>{{ d.id }}</td>
+          <td>{{ d.display_name }}</td>
+          <td>{{ d.platform }}</td>
+          <td>{{ d.title }}</td>
+          <td>{{ d.quality }}</td>
+          <td class="{{ 'ok' if d.status == 'نجاح' else 'fail' }}">{{ d.status }}</td>
+          <td>{{ d.created_at }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+</main>
+</body>
+</html>
